@@ -1,0 +1,34 @@
+package com.springjdbc.SpringJDBCEx.service;
+
+
+import com.springjdbc.SpringJDBCEx.model.Student;
+import com.springjdbc.SpringJDBCEx.repository.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class StudentService {
+
+    @Autowired
+    StudentRepository repo;
+
+    public StudentRepository getRepo() {
+        return repo;
+    }
+
+    @Autowired
+    public void setRepo(StudentRepository repo) {
+        this.repo = repo;
+    }
+
+    public void addStudent(Student student){
+        repo.save(student);
+    }
+
+    public List<Student> getStudents(){
+        return repo.findAll();
+    }
+
+}

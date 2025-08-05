@@ -1,8 +1,19 @@
 package org.example;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+
+
+@Component
 public class Alien {
 
+    @Value("49")
     private int age;
+
+//    @Autowired //Field injection
+//    @Qualifier("desktop")
     private Computer comp;
 
     public Alien(){
@@ -17,6 +28,7 @@ public class Alien {
         return comp;
     }
 
+    @Autowired //Setter injection
     public void setComp(Computer comp) {
         this.comp = comp;
     }
@@ -26,6 +38,7 @@ public class Alien {
     }
 
     public void setAge(int age) {
+        System.out.println("Setter Called!!");
         this.age = age;
     }
 

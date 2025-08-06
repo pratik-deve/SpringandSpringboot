@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
@@ -23,30 +24,17 @@ public class HomeController {
 
 
     @RequestMapping("addAlien")
-
-    //public String addAlien(int aid, String aname, HttpSession session) -> this also works correct for below
-
-    //We can make the use of model instead of session
-    public String addAlien(@RequestParam("aid") int id, @RequestParam("aname") String name, Model model){
+    public ModelAndView addAlien(@RequestParam("aid") int id, @RequestParam("aname") String name, ModelAndView mv){
 
         String result = Integer.toString(id) + " -> " + name;
 
-        System.out.println(result);
-        model.addAttribute("result", result);
-        return "result";
+
+        mv.addObject("result", result);
+
+        mv.setViewName("result");
+
+        return mv;
     }
 
 
-//    @RequestMapping("addAlien")
-//    public String addAlien(HttpServletRequest req, HttpSession session){
-//
-//        int num = Integer.parseInt(req.getParameter("aid"));
-//        String name = req.getParameter("aname");
-//
-//        String result = Integer.toString(num) + " -> " + name;
-//
-//        System.out.println(result);
-//        session.setAttribute("result", result);
-//        return "result.jsp";
-//    }
 }

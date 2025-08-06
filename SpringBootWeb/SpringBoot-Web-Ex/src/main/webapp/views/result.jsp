@@ -7,7 +7,7 @@
     </body>
         <h2>Result : <%= session.getAttribute("result") %> </h2>
 
-        <h2> Result(JSTL syntax) : ${result}</h2>
+        <h2> Result(JSTL syntax) : ${alien}</h2>
 
 
 
